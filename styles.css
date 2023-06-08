@@ -11,6 +11,7 @@ body {
     border: 1px solid #999;
     border-radius: 3px;
     background-color: #fff;
+    width: 300px;
 }
 
 #display {
@@ -18,6 +19,8 @@ body {
     padding: 10px;
     font-size: 20px;
     text-align: right;
+    background-color: #333;
+    color: #fff;
 }
 
 .buttons {
@@ -28,4 +31,22 @@ body {
 button {
     padding: 20px;
     font-size: 18px;
+    border: 1px solid #999;
+}
+
+button.digit {
+    background-color: #eee;
+}
+
+button.operator, button.equal {
+    background-color: #ff9500;
+    color: #fff;
+}
+
+button.clear, button.delete {
+    background-color: #d4d4d2;
+}
+
+button:active {
+    background-color: #ddd;
 }
