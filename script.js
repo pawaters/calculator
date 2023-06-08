@@ -98,7 +98,7 @@ function runTests() {
     runTest('9', '/', '0', 'Error: Cannot Divide by 0', "Test 3 (9 / 0 = Error: Cannot Divide by 0)");
 
     // Test 4
-    runTest('10', '/', '3', '3.333333333333', "Test 4 (10 / 3 = 3.333333333333). I went for 12 decimals max to avoid strange behaviors beyond that level.");
+    runTest('10', '/', '3', '3.333333333333', "Test 4 (10 / 3 = 3.333333333333)");
 
     // Test 5
     runTest('100000000', '*', '100000000', '10000000000000000', "Test 5 (100000000 * 100000000 = 10000000000000000)");
