@@ -5,6 +5,7 @@ let currentResult = null;
 let awaitingNextOperand = false;
 let resultShown = false;
 
+//helper functions to keep it modular and not repeat myself
 function clear() {
     display.value = "";
     operator = null;
@@ -35,7 +36,7 @@ function chooseOperation(oper) {
     // Perform calculation if operator was already chosen
     if(operator !== null && !awaitingNextOperand) {
         currentResult = eval(currentResult + ' ' + operator + ' ' + operand);
-        currentResult = Math.round(currentResult * 100) / 100;
+        currentResult = Math.round(currentResult * 1000000000000) / 1000000000000;
         display.value = currentResult;
     } else {
         currentResult = operand;
@@ -58,7 +59,7 @@ function compute() {
         return;
     }
     currentResult = eval(currentResult + ' ' + operator + ' ' + operand);
-    currentResult = Math.round(currentResult * 1000) / 1000;
+    currentResult = Math.round(currentResult * 1000000000000) / 1000000000000;
     display.value = currentResult;
     operator = null;
     awaitingNextOperand = false;
@@ -82,52 +83,35 @@ buttons.map( button => {
 
 // TESTS
 document.getElementById('test-button').addEventListener('click', runTests);
+const resultDiv = document.getElementById('test-results');  
 
 function runTests() {
+    resultDiv.innerHTML = "";  
+
     // Test 1
-    clear();
-    appendNumber('5');
-    chooseOperation('+');
-    appendNumber('3');
-    compute();
-    console.assert(display.value == '8', "Test 1 (5 + 3 = 8) Failed");
-    console.log("Test 1 (5 + 3 = 8) Passed (if no error message)");
+    runTest('5', '+', '3', '8', "Test 1 (5 + 3 = 8)");
 
     // Test 2
-    clear();
-    appendNumber('6');
-    chooseOperation('-');
-    appendNumber('1');
-    compute();
-    console.assert(display.value == '5', "Test 2 (6 - 1 = 5) Failed");
-    console.log("Test 2 (6 - 1 = 5) Passed (if no error message)");
+    runTest('6', '-', '1', '5', "Test 2 (6 - 1 = 5)");
 
     // Test 3
-    clear();
-    appendNumber('9');
-    chooseOperation('/');
-    appendNumber('0');
-    compute();
-    console.assert(display.value == 'Error: Cannot Divide by 0', "Test 3 (9 / 0 = Error: Cannot Divide by 0) Failed");
-    console.log("Test 3 (9 / 0 = Error: Cannot Divide by 0) Passed (if no error message)");
+    runTest('9', '/', '0', 'Error: Cannot Divide by 0', "Test 3 (9 / 0 = Error: Cannot Divide by 0)");
 
     // Test 4
+    runTest('10', '/', '3', '3.333333333333', "Test 4 (10 / 3 = 3.333333333333). I went for 12 decimals max to avoid strange behaviors beyond that level.");
+
+    // Test 5
+    runTest('100000000', '*', '100000000', '10000000000000000', "Test 5 (100000000 * 100000000 = 10000000000000000)");
+
     clear();
-    appendNumber('10');
-    chooseOperation('/');
-    appendNumber('3');
+}
+
+function runTest(num1, operator, num2, expectedResult, testDescription) {
+    clear();
+    appendNumber(num1);
+    chooseOperation(operator);
+    appendNumber(num2);
     compute();
-    console.assert(display.value == '3.333', "Test 4 (10 + 3 = 3.333) Failed");
-    console.log("Test 4 (10 + 3 = 3.333) Passed (if no error message)");
-
-     // Test 5
-     clear();
-     appendNumber('100000000');
-     chooseOperation('*');
-     appendNumber('100000000');
-     compute();
-     console.assert(display.value == '10000000000000000', "Test 5 (100000000 * 100000000 = 10000000000000000) Failed");
-     console.log("Test 5 (100000000 * 100000000 = 10000000000000000) Passed (if no error message)");
-
-    clear();
+    const result = display.value == expectedResult ? "Passed" : "Failed";
+    resultDiv.innerHTML += `${testDescription} --> ${result}<br>`;
 }

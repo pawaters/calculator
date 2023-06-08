@@ -64,3 +64,7 @@ button:active {
     cursor: pointer;
     margin-top: 2rem;
 }
+
+#test-results {
+    color: #fff; 
+}
