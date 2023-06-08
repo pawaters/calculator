@@ -10,7 +10,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     background-color: black;
@@ -19,6 +19,7 @@ header {
 
 #github-link {
     margin-right: 5vw;
+    color: #ff3333;
 }
 
 #header-logo, #footer-logo {
@@ -106,7 +107,7 @@ button:active {
     background-color: grey;
     color: #fff;
     cursor: pointer;
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 
 #test-results {
