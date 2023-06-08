@@ -1,68 +1,77 @@
 let display = document.getElementById('display');
 let buttons = Array.from(document.getElementsByClassName('buttons'));
 let operator = null;
-let operand1 = null;
-let operand2 = null;
+let currentResult = null;
+let awaitingNextOperand = false;
 let resultShown = false;
 
 function clear() {
     display.value = "";
     operator = null;
-    operand1 = null;
-    operand2 = null;
+    currentResult = null;
+    awaitingNextOperand = false;
     resultShown = false;
 }
 
-function deleteLast() {
-    display.value = display.value.slice(0, -1);
-}
-
 function appendNumber(number) {
-    if(resultShown) {
-        clear();
+    if(awaitingNextOperand || resultShown) {
+        display.value = '';
+        awaitingNextOperand = false;
+        resultShown = false;
     }
     display.value += number;
 }
 
 function chooseOperation(oper) {
-    if (!resultShown) {
+    if(resultShown){
+        resultShown = false;
         operator = oper;
-        operand1 = parseFloat(display.value);
-        display.value = "";
+        awaitingNextOperand = true;
+        return;
     }
+    
+    let operand = parseFloat(display.value);
+
+    // Perform calculation if operator was already chosen
+    if(operator !== null && !awaitingNextOperand) {
+        currentResult = eval(currentResult + ' ' + operator + ' ' + operand);
+        currentResult = Math.round(currentResult * 100) / 100;
+        display.value = currentResult;
+    } else {
+        currentResult = operand;
+    }
+
+    awaitingNextOperand = true;
+    operator = oper;
 }
 
 function compute() {
-    operand2 = parseFloat(display.value);
-    if(operator === '/' && operand2 === 0) {
-        display.value = 'Error: Divide by 0';
-        operator = null;
-        operand1 = null;
-        operand2 = null;
-        resultShown = true;
-    } else {
-        let result = eval(operand1 + ' ' + operator + ' ' + operand2);
-        result = Math.round(result * 100) / 100;
-        display.value = result;
-        operator = null;
-        operand1 = result;
-        operand2 = null;
-        resultShown = true;
+    let operand = parseFloat(display.value);
+    if(operator === null || awaitingNextOperand) {
+        return;
     }
+    if(operator === '/' && operand === 0) {
+        display.value = 'Error: Cannot Divide by 0';
+        operator = null;
+        currentResult = null;
+        awaitingNextOperand = false;
+        return;
+    }
+    currentResult = eval(currentResult + ' ' + operator + ' ' + operand);
+    currentResult = Math.round(currentResult * 1000) / 1000;
+    display.value = currentResult;
+    operator = null;
+    awaitingNextOperand = false;
+    resultShown = true;
 }
 
 buttons.map( button => {
     button.addEventListener('click', (e) => {
         let buttonText = e.target.innerText;
-        if(resultShown && !isNaN(buttonText)){
-            clear();
-        }
         if(buttonText >= '0' && buttonText <= '9'){
             appendNumber(buttonText);
         } else if(buttonText === 'C'){
             clear();
-        } else if(buttonText === 'Del'){
-            deleteLast();
         } else if(buttonText === '+' || buttonText === '-' || buttonText === '*' || buttonText === '/'){
             chooseOperation(buttonText);
         } else if(buttonText === '='){
@@ -82,7 +91,7 @@ function runTests() {
     appendNumber('3');
     compute();
     console.assert(display.value == '8', "Test 1 (5 + 3 = 8) Failed");
-    console.log("Test 1 (5 + 3 = 8) Passed");
+    console.log("Test 1 (5 + 3 = 8) Passed (if no error message)");
 
     // Test 2
     clear();
@@ -91,7 +100,7 @@ function runTests() {
     appendNumber('1');
     compute();
     console.assert(display.value == '5', "Test 2 (6 - 1 = 5) Failed");
-    console.log("Test 2 (6 - 1 = 5) Passed");
+    console.log("Test 2 (6 - 1 = 5) Passed (if no error message)");
 
     // Test 3
     clear();
@@ -99,17 +108,26 @@ function runTests() {
     chooseOperation('/');
     appendNumber('0');
     compute();
-    console.assert(display.value == 'Error: Divide by 0', "Test 3 (9 / 0 = Error: Divide by 0) Failed");
-    console.log("Test 3 (9 / 0 = Error: Divide by 0) Passed");
+    console.assert(display.value == 'Error: Cannot Divide by 0', "Test 3 (9 / 0 = Error: Cannot Divide by 0) Failed");
+    console.log("Test 3 (9 / 0 = Error: Cannot Divide by 0) Passed (if no error message)");
 
     // Test 4
     clear();
-    appendNumber('0.1');
-    chooseOperation('+');
-    appendNumber('0.2');
+    appendNumber('10');
+    chooseOperation('/');
+    appendNumber('3');
     compute();
-    console.assert(display.value == '0.3', "Test 4 (0.1 + 0.2 = 0.3) Failed");
-    console.log("Test 4 (0.1 + 0.2 = 0.3) Passed");
+    console.assert(display.value == '3.333', "Test 4 (10 + 3 = 3.333) Failed");
+    console.log("Test 4 (10 + 3 = 3.333) Passed (if no error message)");
 
-    console.log("All tests passed successfully!");
+     // Test 5
+     clear();
+     appendNumber('100000000');
+     chooseOperation('*');
+     appendNumber('100000000');
+     compute();
+     console.assert(display.value == '10000000000000000', "Test 5 (100000000 * 100000000 = 10000000000000000) Failed");
+     console.log("Test 5 (100000000 * 100000000 = 10000000000000000) Passed (if no error message)");
+
+    clear();
 }
