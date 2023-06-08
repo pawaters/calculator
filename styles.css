@@ -1,16 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body, button, h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: white
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#github-link {
+    margin-right: 5vw;
+}
+
+#header-logo, #footer-logo {
+    height: 15px;  
+    margin-left: 5vw;
+}
+
+
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    margin: auto;
     background-color: #000;
     flex-direction: column;
+    min-height: 667px;
+    min-width: 400px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    padding: 10px;
 }
 
 .calculator {
     border: 1px solid #999;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: #fff;
     width: 300px;
 }
@@ -35,7 +78,8 @@ button {
     border: none;
     border-radius: 50%;
     margin: 5px;
-    color: #000;
+    background-color: #ff3333;
+    color:#ff3333;
 }
 
 button.digit {
@@ -43,8 +87,8 @@ button.digit {
 }
 
 button.operator, button.equal {
-    background-color: #ff9500;
-    color: #fff;
+    background-color: #ff3333;
+    color: #ffffff;
 }
 
 button.clear, button.delete {

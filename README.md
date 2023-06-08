@@ -7,7 +7,8 @@
 
 ## Calculator features.
 - perform sum, substract, multiply and divide
-- the style used is the calculator on the iphone, you have to press the buttons to enter the numbers,
+- the UI appraoch I used is the calculator on the iphone, you have to press the buttons to enter the numbers,
+- the colors, font and style is based on Neomore's web,
 - only used vanilla HTML5/CSS/JavaScript for the implementation.
 - can keep adding operands, not limited to 1, 2 or 3.
 - can press on "=", then if choose an operand the calculation continues
