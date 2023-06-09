@@ -63,16 +63,30 @@ footer {
     border-radius: 5px;
     background-color: #fff;
     width: 300px;
+    display: flex;
+    flex-direction: column;
+    min-height: auto
 }
 
-#display {
+.display-container {
+    height: 140px;
+}
+
+#display, #calculation-display {
     width: 92%;
     padding: 10px;
     font-size: 20px;
     text-align: right;
     background-color: #333;
     color: #fff;
+    height: 46px;
 }
+
+#calculation-display {
+    font-size: 10px;
+    width:93%;
+}
+
 
 .buttons {
     display: grid;
