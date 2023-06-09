@@ -38,9 +38,21 @@
 
         </div>
     </div>
-    <button id="test-button">Run Tests</button>
-    <div>
-        <div id="test-results"></div>
+    <button id="test-button" onclick="handleTests()">Run Tests</button>
+    <button id="clear-test-button" onclick="clearTests()" style="display:none;">Clear Tests</button>
+    <div id="test-table" style="display: none;">
+        <table>
+            <thead>
+                <tr>
+                    <th>SEQUENCE TESTED</th>
+                    <th>EXPECTED OUTPUT</th>
+                    <th>ACTUAL OUTPUT</th>
+                    <th>TEST RESULT</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
     </div>
     <footer>
         <p>©2023 Neomore Oy. Assignment made by pawaters.</p>

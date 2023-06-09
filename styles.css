@@ -13,6 +13,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 10;
     background-color: black;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
@@ -40,7 +41,11 @@ body {
     flex-direction: column;
     min-height: 667px;
     min-width: 400px;
-}
+    padding-top: 120px;
+    height: 100%;
+    overflow-y: auto;
+    padding-bottom: 100px;
+} 
 
 footer {
     position: fixed;
@@ -111,7 +116,44 @@ button.clear, button.delete {
     margin-top: 5rem;
 }
 
-#test-results {
-    color: #fff; 
-    margin: 5px;
+#test-table {
+    margin: 50px auto;
+    width: 80%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+thead {
+    background-color: #333;
+    color: #fff;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: #333;
+    color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #444;
+}
+
+#test-button:active {
+    background-color: #ff3333;
+}
+
+#clear-test-button {
+    width: 200px;
+    height: 60px;
+    background-color: #333;
+    border: none;
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
 }
