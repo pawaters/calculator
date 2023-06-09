@@ -82,28 +82,45 @@ function compute() {
     resultShown = true;
 }
 
-buttons.map(button => {
-    button.addEventListener('click', (e) => {
-        let buttonText = e.target.innerText;
-        if (buttonText >= '0' && buttonText <= '9') {
-            appendNumber(buttonText);
-        } else if (buttonText === '.') {
-            appendNumber(buttonText);
-        } else if (buttonText === 'C') {
-            clear();
-        } else if (buttonText === 'Del') {
-            deleteLast();
-        } else if (buttonText === '-/+') {
-            toggleSign();
-        } else if (buttonText === '%') {
-            percent();
-        } else if (buttonText === '+' || buttonText === '-' || buttonText === '*' || buttonText === '/') {
-            chooseOperation(buttonText);
-        } else if (buttonText === '=') {
-            compute();
+buttons.forEach(button => {
+    button.addEventListener('click', e => {
+        if (e.target.tagName === "BUTTON") {
+            const buttonValue = e.target.innerText;
+            switch (buttonValue) {
+                case 'C':
+                    clear();
+                    break;
+                case 'DEL':
+                    deleteLast();
+                    break;
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                    chooseOperation(buttonValue);
+                    break;
+                case '=':
+                    compute();
+                    break;
+                case '.':
+                    appendNumber(buttonValue);
+                    break;
+                case '-/+':
+                    toggleSign();
+                    break;
+                case '%':
+                    percentage();
+                    break;
+                default:
+                    if (!isNaN(buttonValue)) {
+                        appendNumber(buttonValue);
+                    }
+                    break;
+            }
         }
     });
 });
+
 
 window.addEventListener('keydown', (e) => {
     const key = e.key;
