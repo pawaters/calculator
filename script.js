@@ -90,7 +90,7 @@ buttons.forEach(button => {
                 case 'C':
                     clear();
                     break;
-                case 'DEL':
+                case 'Del':
                     deleteLast();
                     break;
                 case '+':
@@ -201,7 +201,7 @@ function runTests() {
     testTable.style.display = "block"; 
     runTest([4, '+', 2, '-', 2, '/', 4, '*', 2, '='], '2');
     runTest([4, '-/+', '+', 2, '='], '-2');
-    runTest(['2.0005', '+', '1.0005', '='], '3.0005');
+    runTest(['2.0001', '+', '1.0001', '='], '3.0002');
     runTest([8, '%', '=', '*', 2, '='], '0.16');
     runTest([1, '/', 0, '='], 'Error: Cannot Divide by 0');
     runTest([1, '+', '0.1', '=', '+', '0.2', '='], '1.3');

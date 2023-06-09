@@ -27,8 +27,9 @@
 - I have created a runTest() function which you can easily adapt. Its limitation is that it is made for one operand, and does not test the UI of course.
 
 ### 5 test cases are recommended to manually test:
--  keep doing operations and adding operands, testing each operand --> ex: 1 + 2 * 3 - 4 / 5 ...
--  press C to clear
+-  keep doing operations and adding operands, testing each operand --> ex: 1 + 2 * 3 - 4 / 5 % +/ ...
+-  press C to clear, DEL to delete 1
 -  compute an operation pressing "=" then press on an operand to continue calculating with the result, 
 -  compute an operation pressing "=" then press on a number to start a new operation,
 -  press operands several times, change type -> the operand taken into account will be the last
+-  click on the calculator but in between buttons
