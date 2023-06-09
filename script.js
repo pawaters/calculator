@@ -125,33 +125,35 @@ window.addEventListener('keydown', (e) => {
 document.getElementById('test-button').addEventListener('click', runTests);
 const resultDiv = document.getElementById('test-results');  
 
-function runTests() {
-    resultDiv.innerHTML = "";  
-
-    // Test 1
-    runTest('5', '+', '3', '8', "Test 1 (5 + 3 = 8)");
-
-    // Test 2
-    runTest('6', '-', '1', '5', "Test 2 (6 - 1 = 5)");
-
-    // Test 3
-    runTest('9', '/', '0', 'Error: Cannot Divide by 0', "Test 3 (9 / 0 = Error: Cannot Divide by 0)");
-
-    // Test 4
-    runTest('10', '/', '3', '3.333333333333', "Test 4 (10 / 3 = 3.333333333333)");
-
-    // Test 5
-    runTest('100000000', '*', '100000000', '10000000000000000', "Test 5 (100000000 * 100000000 = 10000000000000000)");
-
+function runTest(commands, expectedResult) {
     clear();
-}
-
-function runTest(num1, operator, num2, expectedResult, testDescription) {
-    clear();
-    appendNumber(num1);
-    chooseOperation(operator);
-    appendNumber(num2);
-    compute();
+    let testDescription = '';
+    for (let i = 0; i < commands.length; i++) {
+        let command = commands[i];
+        if (typeof command === 'number' || command.includes(',')) {
+            appendNumber(command.toString());
+            testDescription += command.toString();
+        } else if (['+', '-', '*', '/', '=', 'Del', '-/+', '%'].includes(command)) {
+            if (command === '=') {
+                compute();
+            } else if (command === 'Del') {
+                deleteLast();
+            } else if (command === '-/+') {
+                toggleSign();
+            } else if (command === '%') {
+                percent();
+            } else {
+                chooseOperation(command);
+            }
+            testDescription += ' ' + command + ' ';
+        }
+    }
     const result = display.value == expectedResult ? "Passed" : "Failed";
-    resultDiv.innerHTML += `${testDescription} --> ${result}<br>`;
+    resultDiv.innerHTML += `${testDescription} Expected: ${expectedResult} Output: ${display.value} --> ${result}<br>`;
 }
+
+function runTests() {
+    resultDiv.innerHTML = ""; // clear previous test results
+    runTest([4, '+', 2, '-', 2, '/', 2, '*', 2, '='], '4');
+}
+
