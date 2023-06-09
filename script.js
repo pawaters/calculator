@@ -5,7 +5,6 @@ let currentResult = null;
 let awaitingNextOperand = false;
 let resultShown = false;
 
-//helper functions to keep it modular and not repeat myself
 function clear() {
     display.value = "";
     operator = null;
@@ -36,7 +35,7 @@ function appendNumber(number) {
         awaitingNextOperand = false;
         resultShown = false;
     }
-    if (number === ',' && display.value.includes(',')) return;
+    if (number === '.' && display.value.includes('.')) return;
     display.value += number;
 }
 
@@ -88,7 +87,7 @@ buttons.map(button => {
         let buttonText = e.target.innerText;
         if (buttonText >= '0' && buttonText <= '9') {
             appendNumber(buttonText);
-        } else if (buttonText === ',') {
+        } else if (buttonText === '.') {
             appendNumber(buttonText);
         } else if (buttonText === 'C') {
             clear();
@@ -108,7 +107,7 @@ buttons.map(button => {
 
 window.addEventListener('keydown', (e) => {
     const key = e.key;
-    if ((key >= '0' && key <= '9') || key === ',') {
+    if ((key >= '0' && key <= '9') || key === '.') {
         appendNumber(key);
     } else if (key === '+' || key === '-' || key === '*' || key === '/') {
         chooseOperation(key);
@@ -140,8 +139,8 @@ function clearTests() {
     let clearTestButton = document.getElementById('clear-test-button');
     let testTable = document.getElementById('test-table');
     let tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = ""; // clear previous test results
-    testTable.style.display = "none"; // hide the table
+    tableBody.innerHTML = ""; 
+    testTable.style.display = "none"; 
     clearTestButton.style.display = 'none';
     testButton.style.display = 'inline-block';
 }
@@ -151,7 +150,7 @@ function runTest(commands, expectedResult) {
     let testDescription = '';
     for (let i = 0; i < commands.length; i++) {
         let command = commands[i];
-        if (typeof command === 'number' || command.includes(',')) {
+        if (typeof command === 'number' || command.includes('.')) {
             appendNumber(command.toString());
             testDescription += command.toString();
         } else if (['+', '-', '*', '/', '=', 'Del', '-/+', '%'].includes(command)) {
@@ -181,17 +180,17 @@ function runTest(commands, expectedResult) {
 function runTests() {
     let testTable = document.getElementById('test-table');
     let tableBody = document.getElementById('table-body');
-    tableBody.innerHTML = ""; // clear previous test results
-    testTable.style.display = "block"; // make the table visible
+    tableBody.innerHTML = ""; 
+    testTable.style.display = "block"; 
     runTest([4, '+', 2, '-', 2, '/', 4, '*', 2, '='], '2');
     runTest([4, '-/+', '+', 2, '='], '-2');
-    runTest(['2,0005', '+', '1,0005', '='], '3.0005');
+    runTest(['2.0005', '+', '1.0005', '='], '3.0005');
     runTest([8, '%', '=', '*', 2, '='], '0.16');
     runTest([1, '/', 0, '='], 'Error: Cannot Divide by 0');
-    runTest([1, '+', '0,1', '=', '+', '0,2', '='], '1.3');
-    runTest([1, '+', '+', 2, '='], '3.000');
-    runTest([1, '+', 2, '+', 3, '+', 4, '='], '10.000');
-    runTest([1, '+', 2, '*', 3, '='], '9.000');
-    runTest(['1,1', '+', '2,2', '='], '3.300');
+    runTest([1, '+', '0.1', '=', '+', '0.2', '='], '1.3');
+    runTest([1, '+', '+', 2, '='], '3');
+    runTest([1, '+', 2, '+', 3, '+', 4, '='], '10');
+    runTest([1, '+', 2, '*', 3, '='], '9');
+    runTest(['1.1', '+', '2.2', '='], '3.3');
 }
 

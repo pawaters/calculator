@@ -106,7 +106,7 @@ button.clear, button.delete {
     background-color: #d63333;
 }
 
-#test-button {
+#test-button, #clear-test-button {
     border: none;
     border-radius: 2px;
     padding: 10px 20px;
@@ -143,17 +143,6 @@ tbody tr:nth-child(even) {
     background-color: #444;
 }
 
-#test-button:active {
+#test-button:active, #clear-test-button:active {
     background-color: #ff3333;
-}
-
-#clear-test-button {
-    width: 200px;
-    height: 60px;
-    background-color: #333;
-    border: none;
-    color: white;
-    font-size: 20px;
-    margin: 20px;
-    cursor: pointer;
 }
