@@ -15,13 +15,13 @@ function clear() {
 }
 
 function toggleSign() {
-    if (operationDisplay.value !== "") {
-        operand1 = -operand1;
-        display.value = operand1;
-    } else if (display.value.startsWith('-')) {
+    if (display.value.startsWith('-')) {
         display.value = display.value.slice(1);
     } else {
         display.value = '-' + display.value;
+        if (resultShown) {
+            
+        }
     }
 }
 
