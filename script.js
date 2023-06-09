@@ -89,7 +89,6 @@ function compute() {
 buttons.map(button => {
     button.addEventListener('click', (e) => {
         let buttonText = e.target.innerText;
-        console.log(buttonText);
         if (buttonText >= '0' && buttonText <= '9') {
             appendNumber(buttonText);
         } else if (buttonText === ',') {
@@ -112,7 +111,6 @@ buttons.map(button => {
 
 window.addEventListener('keydown', (e) => {
     const key = e.key;
-    console.log(key);
     if ((key >= '0' && key <= '9') || key === ',') {
         appendNumber(key);
     } else if (key === '+' || key === '-' || key === '*' || key === '/') {
