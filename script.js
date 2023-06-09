@@ -5,6 +5,7 @@ let operator = null;
 let currentResult = null;
 let awaitingNextOperand = false;
 let resultShown = false;
+let resultShownCalcDisplay = false;
 
 function clear() {
     display.value = "";
@@ -13,6 +14,7 @@ function clear() {
     currentResult = null;
     awaitingNextOperand = false;
     resultShown = false;
+    resultShownCalcDisplay = false;
 }
 
 function updateCalculationDisplay(value) {
@@ -37,6 +39,10 @@ function percent() {
 }
 
 function appendNumber(number) {
+    if (resultShownCalcDisplay) {
+        calculationDisplay.innerHTML = '';
+        resultShownCalcDisplay = false;
+    }
     if(awaitingNextOperand || resultShown) {
         display.value = '';
         awaitingNextOperand = false;
@@ -49,6 +55,10 @@ function appendNumber(number) {
 }
 
 function chooseOperation(oper) {
+    if (resultShownCalcDisplay) {
+        calculationDisplay.innerHTML = currentResult;
+        resultShownCalcDisplay = false;
+    }
     if(resultShown){
         resultShown = false;
         operator = oper;
@@ -91,7 +101,7 @@ function compute() {
     operator = null;
     awaitingNextOperand = false;
     resultShown = true;
-    calculationDisplay.innerHTML = '';
+    resultShownCalcDisplay = true;
 }
 
 buttons.forEach(button => {

@@ -75,7 +75,7 @@ footer {
 #display, #calculation-display {
     width: 92%;
     padding: 10px;
-    font-size: 20px;
+    font-size: 35px;
     text-align: right;
     background-color: #333;
     color: #fff;
@@ -83,7 +83,7 @@ footer {
 }
 
 #calculation-display {
-    font-size: 10px;
+    font-size: 20px;
     width:93%;
 }
 
