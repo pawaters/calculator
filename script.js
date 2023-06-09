@@ -15,7 +15,10 @@ function clear() {
 }
 
 function toggleSign() {
-    if (display.value.startsWith('-')) {
+    if (operationDisplay.value !== "") {
+        operand1 = -operand1;
+        display.value = operand1;
+    } else if (display.value.startsWith('-')) {
         display.value = display.value.slice(1);
     } else {
         display.value = '-' + display.value;
@@ -109,6 +112,7 @@ buttons.map(button => {
 
 window.addEventListener('keydown', (e) => {
     const key = e.key;
+    console.log(key);
     if ((key >= '0' && key <= '9') || key === ',') {
         appendNumber(key);
     } else if (key === '+' || key === '-' || key === '*' || key === '/') {
