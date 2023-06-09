@@ -27,7 +27,7 @@ function toggleSign() {
     } else {
         display.value = '-' + display.value;
     }
-    updateCalculationDisplay(number);
+    updateCalculationDisplay(display.value);
 }
 
 function deleteLast() {
@@ -131,7 +131,7 @@ buttons.forEach(button => {
                     toggleSign();
                     break;
                 case '%':
-                    percentage();
+                    percent();
                     break;
                 default:
                     if (!isNaN(buttonValue)) {
