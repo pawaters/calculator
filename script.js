@@ -1,4 +1,5 @@
 let display = document.getElementById('display');
+let calculationDisplay = document.getElementById('calculation-display');
 let buttons = Array.from(document.getElementsByClassName('buttons'));
 let operator = null;
 let currentResult = null;
@@ -7,10 +8,15 @@ let resultShown = false;
 
 function clear() {
     display.value = "";
+    calculationDisplay.innerHTML = "";
     operator = null;
     currentResult = null;
     awaitingNextOperand = false;
     resultShown = false;
+}
+
+function updateCalculationDisplay(value) {
+    calculationDisplay.innerHTML += value;
 }
 
 function toggleSign() {
@@ -19,6 +25,7 @@ function toggleSign() {
     } else {
         display.value = '-' + display.value;
     }
+    updateCalculationDisplay(number);
 }
 
 function deleteLast() {
@@ -37,6 +44,8 @@ function appendNumber(number) {
     }
     if (number === '.' && display.value.includes('.')) return;
     display.value += number;
+    updateCalculationDisplay(number);
+
 }
 
 function chooseOperation(oper) {
@@ -44,6 +53,7 @@ function chooseOperation(oper) {
         resultShown = false;
         operator = oper;
         awaitingNextOperand = true;
+        updateCalculationDisplay(' ' + operator + ' ');
         return;
     }
     
@@ -60,6 +70,7 @@ function chooseOperation(oper) {
 
     awaitingNextOperand = true;
     operator = oper;
+    updateCalculationDisplay(' ' + operator + ' ');
 }
 
 function compute() {
@@ -80,6 +91,7 @@ function compute() {
     operator = null;
     awaitingNextOperand = false;
     resultShown = true;
+    calculationDisplay.innerHTML = '';
 }
 
 buttons.forEach(button => {
