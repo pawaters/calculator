@@ -85,7 +85,7 @@ button {
     color:#ff3333;
 }
 
-button.digit {
+button.digit, button.decimal_point {
     background-color: #eee;
 }
 
@@ -98,8 +98,8 @@ button.clear, button.delete {
     background-color: #d4d4d2;
 }
 
-button:active {
-    background-color: #ddd;
+.button:active, button:active {
+    background-color: #d63333;
 }
 
 #test-button {

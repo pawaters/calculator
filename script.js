@@ -14,12 +14,29 @@ function clear() {
     resultShown = false;
 }
 
+function toggleSign() {
+    if (display.value.startsWith('-')) {
+        display.value = display.value.slice(1);
+    } else {
+        display.value = '-' + display.value;
+    }
+}
+
+function deleteLast() {
+    display.value = display.value.slice(0, -1);
+}
+
+function percent() {
+    display.value = parseFloat(display.value) / 100;
+}
+
 function appendNumber(number) {
     if(awaitingNextOperand || resultShown) {
         display.value = '';
         awaitingNextOperand = false;
         resultShown = false;
     }
+    if (number === ',' && display.value.includes(',')) return;
     display.value += number;
 }
 
@@ -66,19 +83,43 @@ function compute() {
     resultShown = true;
 }
 
-buttons.map( button => {
+buttons.map(button => {
     button.addEventListener('click', (e) => {
         let buttonText = e.target.innerText;
-        if(buttonText >= '0' && buttonText <= '9'){
+        console.log(buttonText);
+        if (buttonText >= '0' && buttonText <= '9') {
             appendNumber(buttonText);
-        } else if(buttonText === 'C'){
+        } else if (buttonText === ',') {
+            appendNumber(buttonText);
+        } else if (buttonText === 'C') {
             clear();
-        } else if(buttonText === '+' || buttonText === '-' || buttonText === '*' || buttonText === '/'){
+        } else if (buttonText === 'Del') {
+            deleteLast();
+        } else if (buttonText === '-/+') {
+            toggleSign();
+        } else if (buttonText === '%') {
+            percent();
+        } else if (buttonText === '+' || buttonText === '-' || buttonText === '*' || buttonText === '/') {
             chooseOperation(buttonText);
-        } else if(buttonText === '='){
+        } else if (buttonText === '=') {
             compute();
         }
     });
+});
+
+window.addEventListener('keydown', (e) => {
+    const key = e.key;
+    if ((key >= '0' && key <= '9') || key === ',') {
+        appendNumber(key);
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        chooseOperation(key);
+    } else if (key === 'Backspace') {
+        deleteLast();
+    } else if (key === 'Escape') {
+        clear();
+    } else if (key === 'Enter' || key === '=') {
+        compute();
+    }
 });
 
 // TESTS
