@@ -155,5 +155,6 @@ function runTest(commands, expectedResult) {
 function runTests() {
     resultDiv.innerHTML = ""; // clear previous test results
     runTest([4, '+', 2, '-', 2, '/', 2, '*', 2, '='], '4');
+    runTest([4, '+', '+', 2, '=', '-', 2, '/', 2, '*', 2, '='], '4');
 }
 
