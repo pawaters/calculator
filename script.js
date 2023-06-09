@@ -19,9 +19,6 @@ function toggleSign() {
         display.value = display.value.slice(1);
     } else {
         display.value = '-' + display.value;
-        if (resultShown) {
-            
-        }
     }
 }
 
