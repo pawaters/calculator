@@ -9,7 +9,14 @@
 - perform sum, substract, multiply and divide
 - the UI approach and buttons I used are based on the iphone calculator, which I assume is the most used "simple calculator" in the world: you can also clear, 
  I added one button to the iphone version: the "Del", which does like "Delete" on your keyboard: deletes 1 character.
-<img src="iphone_calculator.jpeg" alt="Image" height="50">
+
+<style>
+    .img-container {
+        float: left;
+        margin-right: 10px;
+    }
+</style>
+<img src="iphone_calculator.jpeg" alt="Image" height="100">
 
  
 - you can either type or press the buttons,
