@@ -192,6 +192,7 @@ function runTest(commands, expectedResult) {
     row.insertCell(1).innerHTML = expectedResult;
     row.insertCell(2).innerHTML = display.value;
     row.insertCell(3).innerHTML = result;
+    clear()
 }
 
 function runTests() {
