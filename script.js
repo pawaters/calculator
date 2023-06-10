@@ -59,9 +59,11 @@ function toggleSign() {
 }
 
 function deleteLast() {
-    display.value = display.value.slice(0, -1);
-    let calcDispValue = calculationDisplay.innerHTML;
-    calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.length - 1);
+    if (awaitingNextOperand === false) {
+        display.value = display.value.slice(0, -1);
+        let calcDispValue = calculationDisplay.innerHTML;
+        calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.length - 1);
+    }
 }
 
 function percent() {
@@ -269,5 +271,15 @@ function runTests() {
     runTest([1, '+', 2, '+', 3, '+', 4, '='], '10');
     runTest([1, '+', 2, '*', 3, '='], '9');
     runTest(['1.1', '+', '2.2', '='], '3.3');
+    runTest([100, '+', '%', 200, '='], '300');
+    runTest([100, '+', 200, '=', '%'], '3');
+    runTest([100, '+', '-/+', 200, '='], '300');
+    runTest([100, '-/+', '+', '-/+', 200, '='], '100');
+    runTest([100, '+', 200, '=', '-/+'], '-300');
+    runTest([10, '/', 3, '='], '3.333333333333');
+    runTest([10000000000, '*', 1000000000, '='], '10000000000000000000');
+    runTest([1, '/', 1000000000000, '='], '1e-12');
+    runTest([100, 'Del', '+', 200, '='], '210');
+    runTest([100, '+', 200, '=', '%'], '3');
 }
 
