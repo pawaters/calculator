@@ -169,7 +169,7 @@ buttons.forEach(button => {
                         appendNumber(buttonValue);
                     }
                     break;
-            }
+            }  
         }
     });
 });

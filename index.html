@@ -3,13 +3,14 @@
 <head>
     <title>Pierre's Assignment for Neomore</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header>
         <a href="https://neomore.fi/">
             <img src="neomore_logo.png" alt="neomore.fi logo" id="header-logo">
         </a>
-        <h1>ASSIGNMENT: A SIMPLE CALCULATOR</h1>
+        <h1><span style="color:#ff3333;">ASSIGNMENT:</span> A SIMPLE CALCULATOR</h1>
         <a href="https://github.com/pawaters/calculator" id="github-link">GITHUB REPOSITORY</a>
     </header>
     <div class="calculator"> 
@@ -40,21 +41,25 @@
 
         </div>
     </div>
-    <button id="test-button" onclick="handleTests()">Run Tests</button>
-    <button id="clear-test-button" onclick="clearTests()" style="display:none;">Clear Tests</button>
-    <div id="test-table" style="display: none;">
-        <table>
-            <thead>
-                <tr>
-                    <th>SEQUENCE TESTED</th>
-                    <th>EXPECTED OUTPUT</th>
-                    <th>ACTUAL OUTPUT</th>
-                    <th>TEST RESULT</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-            </tbody>
-        </table>
+    <div class="test-container">
+        <div class="test-button-container">
+            <button id="test-button" onclick="handleTests()">Run Tests</button>
+            <button id="clear-test-button" onclick="clearTests()" style="display:none;">Clear Tests</button>
+        </div>
+        <div id="test-table" style="display: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>SEQUENCE TESTED</th>
+                        <th>EXPECTED OUTPUT</th>
+                        <th>ACTUAL OUTPUT</th>
+                        <th>TEST RESULT</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
     </div>
     <footer>
         <p>©2023 Neomore Oy. Assignment made by pawaters.</p>
