@@ -103,13 +103,18 @@ button {
     color:#ff3333;
 }
 
-button.digit, button.decimal_point {
+button.digit {
     background-color: #eee;
 }
 
 button.operator, button.equal {
     background-color: #ff3333;
     color: #ffffff;
+}
+
+button.equal {
+    grid-column: span 2;
+    border-radius: 50px
 }
 
 button.clear, button.delete {

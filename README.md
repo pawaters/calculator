@@ -7,7 +7,7 @@
 
 ## Calculator features.
 - perform sum, substract, multiply and divide
-- the UI approach and buttons I used are based on the iphone calculator, which I assume is the most used "simple calculator" in the world: you can also clear, 
+- the UI approach and buttons I used are based on the iphone calculator, when held in portrait, which I assume is the most used "simple calculator" in the world: you can also clear, 
  I added one button to the iphone version: the "Del", which does like "Delete" on your keyboard: deletes 1 character.
 - you can either type or press the buttons,
 - the colors, font and style is based on Neomore's web,
@@ -37,4 +37,5 @@ Click the "Run Tests" button and the results will be displayed. They cover:
 
 ## Things I would improve for a bigger project 
 - Add a "del" button that works in all situations. I had implemented it, but it would need some refactoring of the whole JS to work with a variety of edge cases. Also, it was not included in the iphone calculator and estimated that it was therefore out of scope for a "simple calculator".
+- add all the buttons of the iphone calculator but when held in paysage.
 - Use a more OOP approach to my JS.
