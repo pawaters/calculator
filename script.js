@@ -185,7 +185,29 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-document.getElementById("test-button").addEventListener("click", runTests);
+document.getElementById("test-button").addEventListener("click", runTests, handleTests);
+document.getElementById("clear-test-button").addEventListener("click", clearTests);
+
+function handleTests() {
+    let testButton = document.getElementById('test-button');
+    let clearTestButton = document.getElementById('clear-test-button');
+    if (testButton.style.display !== 'none') {
+        runTests();
+        testButton.style.display = 'none';
+        clearTestButton.style.display = 'inline-block';
+    } 
+}
+
+function clearTests() {
+    let testButton = document.getElementById('test-button');
+    let clearTestButton = document.getElementById('clear-test-button');
+    let testTable = document.getElementById('test-table');
+    let tableBody = document.getElementById('table-body');
+    tableBody.innerHTML = ""; 
+    testTable.style.display = "none"; 
+    clearTestButton.style.display = 'none';
+    testButton.style.display = 'inline-block';
+}
 
 function runTest(commands, expectedResult) {
   clear();
@@ -242,4 +264,5 @@ function runTests() {
   runTest([10000000000, "*", 1000000000, "="], "10000000000000000000");
   runTest([1, "/", 1000000000000, "="], "1e-12");
   runTest([100, "+", 200, "=", "%"], "3");
+  runTest([100, "+", 200, "=", "%", "+", 200,], "203");
 }
