@@ -31,7 +31,7 @@ function updateCalculationDisplay(value) {
 }
 
 function toggleSign() {
-  if (resultShown) {
+  if (resultShown) {  
     currentResult = -currentResult;
     display.value = currentResult;
     calculationDisplay.innerHTML = currentResult;
@@ -63,8 +63,9 @@ function toggleSign() {
 }
 
 function percent() {
-  if (awaitingNextOperand === false) {
+ if (awaitingNextOperand === false || resultShown) {
     display.value = parseFloat(display.value) / 100;
+    currentResult = display.value;
     updateCalculationDisplay(display.value);
   }
 }
