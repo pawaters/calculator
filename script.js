@@ -25,18 +25,38 @@ function updateCalculationDisplay(value) {
     calculationDisplay.innerHTML = value;
 }
 
+
 function toggleSign() {
-    if (display.value.startsWith('-')) {
-        display.value = display.value.slice(1);
-    } else {
-        display.value = '-' + display.value;
-    }
-    appendCalculationDisplay(display.value);
+    
+    let lastEntry = calculationDisplay.innerHTML[calculationDisplay.innerHTML.length - 1];
+    const operators = ['+', '-', '*', '/'];
 
     if (resultShown) {
-        updateCalculationDisplay(display.value)
-    } else if (awaitingNextOperand) {
+        currentResult = -currentResult;
+        display.value = currentResult;
+        calculationDisplay.innerHTML = currentResult;
+    } 
+    if (resultShownCalcDisplay) {
+        updateCalculationDisplay(currentResult);
+        resultShownCalcDisplay = false;
+    }
+    else if (operators.includes(lastEntry)) {
+        calculationDisplay.innerHTML = currentResult;
+    } else {
+        if (display.value.startsWith('-')) {
+            display.value = display.value.slice(1);
+        } else {
+            display.value = '-' + display.value;
+        }
 
+        // Replace the last number in the calculation display with its negative/positive counterpart
+        let lastNumberRegex = /(?:[+\-*/] )?([0-9.]+)$/;
+        let match = calculationDisplay.innerHTML.match(lastNumberRegex);
+        if (match) {
+            let lastNumber = match[1];
+            let newNumber = (lastNumber.startsWith('-') ? lastNumber.slice(1) : '-' + lastNumber);
+            calculationDisplay.innerHTML = calculationDisplay.innerHTML.replace(lastNumberRegex, newNumber);
+        }
     }
 }
 
