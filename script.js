@@ -59,26 +59,6 @@ function toggleSign() {
     }
 }
 
-function deleteLast() {
-    if (resultShown) {
-        clear()
-    }
-    if (!lastEnteredOperator) {
-        display.value = display.value.slice(0, -1);
-        let calcDispValue = calculationDisplay.innerHTML;
-        if (calcDispValue.endsWith(' ')) {
-            calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.length - 3);
-        } else {
-            calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.length - 1);
-        }
-    } else {
-        let calcDispValue = calculationDisplay.innerHTML;
-        calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.lastIndexOf(' '));
-        operator = null;
-        lastEnteredOperator = false;
-    }
-}
-
 
 function percent() {
     if (awaitingNextOperand === false) {
@@ -166,9 +146,6 @@ buttons.forEach(button => {
                 case 'C':
                     clear();
                     break;
-                case 'Del':
-                    deleteLast();
-                    break;
                 case '+':
                 case '-':
                 case '*':
@@ -204,8 +181,6 @@ window.addEventListener('keydown', (e) => {
         appendNumber(key);
     } else if (key === '+' || key === '-' || key === '*' || key === '/') {
         chooseOperation(key);
-    } else if (key === 'Backspace') {
-        deleteLast();
     } else if (key === 'Escape') {
         clear();
     } else if (key === 'Enter' || key === '=') {
@@ -246,11 +221,9 @@ function runTest(commands, expectedResult) {
         if (typeof command === 'number' || command.includes('.')) {
             appendNumber(command.toString());
             testDescription += command.toString();
-        } else if (['+', '-', '*', '/', '=', 'Del', '-/+', '%'].includes(command)) {
+        } else if (['+', '-', '*', '/', '=', '-/+', '%'].includes(command)) {
             if (command === '=') {
                 compute();
-            } else if (command === 'Del') {
-                deleteLast();
             } else if (command === '-/+') {
                 toggleSign();
             } else if (command === '%') {
@@ -294,7 +267,6 @@ function runTests() {
     runTest([10, '/', 3, '='], '3.333333333333');
     runTest([10000000000, '*', 1000000000, '='], '10000000000000000000');
     runTest([1, '/', 1000000000000, '='], '1e-12');
-    runTest([100, 'Del', '+', 200, '='], '210');
     runTest([100, '+', 200, '=', '%'], '3');
 }
 
