@@ -35,15 +35,20 @@ function toggleSign() {
 
     if (resultShown) {
         updateCalculationDisplay(display.value)
-    } 
+    } else if (awaitingNextOperand) {
+
+    }
 }
 
 function deleteLast() {
     display.value = display.value.slice(0, -1);
+    let calcDispValue = calculationDisplay.innerHTML;
+    calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.length - 1);
 }
 
 function percent() {
     display.value = parseFloat(display.value) / 100;
+    updateCalculationDisplay(display.value);
 }
 
 function appendNumber(number) {
