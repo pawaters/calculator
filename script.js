@@ -21,6 +21,10 @@ function appendCalculationDisplay(value) {
     calculationDisplay.innerHTML += value;
 }
 
+function updateCalculationDisplay(value) {
+    calculationDisplay.innerHTML = value;
+}
+
 function toggleSign() {
     if (display.value.startsWith('-')) {
         display.value = display.value.slice(1);
@@ -28,6 +32,10 @@ function toggleSign() {
         display.value = '-' + display.value;
     }
     appendCalculationDisplay(display.value);
+
+    if (resultShown) {
+        updateCalculationDisplay(display.value)
+    } 
 }
 
 function deleteLast() {
