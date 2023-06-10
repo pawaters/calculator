@@ -6,7 +6,6 @@ let currentResult = null;
 let awaitingNextOperand = false;
 let resultShown = false;
 let resultShownCalcDisplay = false;
-let lastEnteredOperator = false;
 
 function clear() {
   display.value = "";
@@ -27,10 +26,6 @@ function updateCalculationDisplay(value) {
 }
 
 function toggleSign() {
-  let lastEntry =
-    calculationDisplay.innerHTML[calculationDisplay.innerHTML.length - 1];
-  const operators = ["+", "-", "*", "/"];
-
   if (resultShown) {
     currentResult = -currentResult;
     display.value = currentResult;
@@ -82,7 +77,6 @@ function appendNumber(number) {
   if (number === "." && display.value.includes(".")) return;
   display.value += number;
   appendCalculationDisplay(number);
-  lastEnteredOperator = false;
 }
 
 function performCalculation(operand) {
@@ -116,7 +110,6 @@ function chooseOperation(oper) {
   awaitingNextOperand = true;
   operator = oper;
   appendCalculationDisplay(" " + operator + " ");
-  lastEnteredOperator = true;
 }
 
 function compute() {
@@ -188,28 +181,6 @@ window.addEventListener("keydown", (e) => {
 });
 
 document.getElementById("test-button").addEventListener("click", runTests);
-const resultDiv = document.getElementById("test-results");
-
-function handleTests() {
-  let testButton = document.getElementById("test-button");
-  let clearTestButton = document.getElementById("clear-test-button");
-  if (testButton.style.display !== "none") {
-    runTests();
-    testButton.style.display = "none";
-    clearTestButton.style.display = "inline-block";
-  }
-}
-
-function clearTests() {
-  let testButton = document.getElementById("test-button");
-  let clearTestButton = document.getElementById("clear-test-button");
-  let testTable = document.getElementById("test-table");
-  let tableBody = document.getElementById("table-body");
-  tableBody.innerHTML = "";
-  testTable.style.display = "none";
-  clearTestButton.style.display = "none";
-  testButton.style.display = "inline-block";
-}
 
 function runTest(commands, expectedResult) {
   clear();
