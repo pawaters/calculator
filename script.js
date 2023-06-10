@@ -54,6 +54,12 @@ function appendNumber(number) {
 
 }
 
+function performCalculation(operand) {
+    currentResult = eval(currentResult + ' ' + operator + ' ' + operand);
+    currentResult = Math.round(currentResult * 1000000000000) / 1000000000000;
+    display.value = currentResult;
+}
+
 function chooseOperation(oper) {
     if (resultShownCalcDisplay) {
         calculationDisplay.innerHTML = currentResult;
@@ -71,9 +77,7 @@ function chooseOperation(oper) {
 
     // Perform calculation if operator was already chosen
     if(operator !== null && !awaitingNextOperand) {
-        currentResult = eval(currentResult + ' ' + operator + ' ' + operand);
-        currentResult = Math.round(currentResult * 1000000000000) / 1000000000000;
-        display.value = currentResult;
+        performCalculation(operand);
     } else {
         currentResult = operand;
     }
@@ -82,6 +86,8 @@ function chooseOperation(oper) {
     operator = oper;
     updateCalculationDisplay(' ' + operator + ' ');
 }
+
+
 
 function compute() {
     let operand = parseFloat(display.value);
@@ -95,9 +101,7 @@ function compute() {
         awaitingNextOperand = false;
         return;
     }
-    currentResult = eval(currentResult + ' ' + operator + ' ' + operand);
-    currentResult = Math.round(currentResult * 1000000000000) / 1000000000000;
-    display.value = currentResult;
+    performCalculation(operand);
     operator = null;
     awaitingNextOperand = false;
     resultShown = true;
