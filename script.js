@@ -17,7 +17,7 @@ function clear() {
     resultShownCalcDisplay = false;
 }
 
-function updateCalculationDisplay(value) {
+function appendCalculationDisplay(value) {
     calculationDisplay.innerHTML += value;
 }
 
@@ -27,7 +27,7 @@ function toggleSign() {
     } else {
         display.value = '-' + display.value;
     }
-    updateCalculationDisplay(display.value);
+    appendCalculationDisplay(display.value);
 }
 
 function deleteLast() {
@@ -50,7 +50,7 @@ function appendNumber(number) {
     }
     if (number === '.' && display.value.includes('.')) return;
     display.value += number;
-    updateCalculationDisplay(number);
+    appendCalculationDisplay(number);
 
 }
 
@@ -69,7 +69,7 @@ function chooseOperation(oper) {
         resultShown = false;
         operator = oper;
         awaitingNextOperand = true;
-        updateCalculationDisplay(' ' + operator + ' ');
+        appendCalculationDisplay(' ' + operator + ' ');
         return;
     }
     
@@ -84,7 +84,7 @@ function chooseOperation(oper) {
 
     awaitingNextOperand = true;
     operator = oper;
-    updateCalculationDisplay(' ' + operator + ' ');
+    appendCalculationDisplay(' ' + operator + ' ');
 }
 
 
