@@ -20,6 +20,20 @@
 - decimals: up to 12 decimals, as from 14 decimals we have observed some strange behaviors in some cases. It is apparently inherent to computers and its management of floats after some research.
 - upper limit: from e+80, or 10^80, the last integer before the exponent of 10 again has some similar weird behavior as when asking for 12+ decimals.
 
+## Clean code
+
+Here are the principles I followed:
+- readable & self-explanatory
+- DRY
+- Error handling
+- Automated testing
+- consistency
+- single responsibility: one function does one thing.
+
+To check for all that, I reviewed my code and used Eslint, as well as Prettier for formatting. 
+Each function is nearly always less than 25 lines.
+I decided to keep all JS in one file given the simplicity of the project.
+
 ## Bonus: Automated testing and planned test cases
 
 ### test cases have been automated:
