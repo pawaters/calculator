@@ -65,8 +65,10 @@ function deleteLast() {
 }
 
 function percent() {
-    display.value = parseFloat(display.value) / 100;
-    updateCalculationDisplay(display.value);
+    if (awaitingNextOperand === false) {
+        display.value = parseFloat(display.value) / 100;
+        updateCalculationDisplay(display.value);
+    }
 }
 
 function appendNumber(number) {
