@@ -9,6 +9,7 @@
 - perform sum, substract, multiply and divide
 - the UI approach and buttons I used are based on the iphone calculator, when held in portrait, which I assume is the most used "simple calculator" in the world: you can also clear, 
  I added one button to the iphone version: the "Del", which does like "Delete" on your keyboard: deletes 1 character.
+- layout is responsive with a special simplified UI for mobile sizes (the header, footer and tests will appear only if width super to 600px)
 - you can either type or press the buttons,
 - the colors, font and style is based on Neomore's web,
 - only used vanilla HTML5/CSS/JavaScript for the implementation.

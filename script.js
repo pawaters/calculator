@@ -48,7 +48,6 @@ function toggleSign() {
         updateCalculationDisplay(currentResult);
         resultShownCalcDisplay = false;
     } else if (awaitingNextOperand === false) {
-        // Replace the last number in the calculation display with its negative/positive counterpart
         let lastNumberRegex = /(?:[+\-*/] )?([0-9.]+)$/;
         let match = calculationDisplay.innerHTML.match(lastNumberRegex);
         if (match) {
@@ -174,7 +173,6 @@ buttons.forEach(button => {
     });
 });
 
-
 window.addEventListener('keydown', (e) => {
     const key = e.key;
     if ((key >= '0' && key <= '9') || key === '.') {
@@ -188,7 +186,6 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-// TESTS
 document.getElementById('test-button').addEventListener('click', runTests);
 const resultDiv = document.getElementById('test-results');  
 
