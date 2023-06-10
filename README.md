@@ -1,14 +1,15 @@
 # Assignment instructions:
 
-- Implement a simple calculator app that can perform sum, subtract, multiply and division calculations.  
-- Use HTML5/CSS/JavaScript for the implementation.   
+- Implement a simple calculator app that can perform sum, subtract, multiply and division calculations.
+- Use HTML5/CSS/JavaScript for the implementation.
 - Pay attention to reusable and clean code, and practical and purposeful UI.
 - Optional task: plan sufficient test cases to cover the application on a reasonable level.
 
 ## Calculator features.
+
 - perform sum, substract, multiply and divide
-- the UI approach and buttons I used are based on the iphone calculator, when held in portrait, which I assume is the most used "simple calculator" in the world: you can also clear, 
- I added one button to the iphone version: the "Del", which does like "Delete" on your keyboard: deletes 1 character.
+- the UI approach and buttons I used are based on the iphone calculator, when held in portrait, which I assume is the most used "simple calculator" in the world: you can also clear,
+  I added one button to the iphone version: the "Del", which does like "Delete" on your keyboard: deletes 1 character.
 - layout is responsive with a special simplified UI for mobile sizes (the header, footer and tests will appear only if width super to 600px)
 - you can either type or press the buttons,
 - the colors, font and style is based on Neomore's web,
@@ -24,19 +25,22 @@
 ### test cases have been automated:
 
 Click the "Run Tests" button and the results will be displayed. They cover:
+
 - each operation and operand,
-- divived by 0 error case, as well as dividing 10 by 3 and checking for the max number of decimals, as well as multiplying 2 big numbers. 
+- divived by 0 error case, as well as dividing 10 by 3 and checking for the max number of decimals, as well as multiplying 2 big numbers.
 - I have created a runTest() function which you can easily adapt. Its limitation is that it is made for one operand, and does not test the UI of course.
 
 ### test cases recommended to manually test:
--  keep doing operations and adding operands, testing each operand --> ex: 1 + 2 * 3 - 4 / 5 % +/ ...
--  press C to clear, DEL to delete 1
--  compute an operation pressing "=" then press on an operand to continue calculating with the result, 
--  compute an operation pressing "=" then press on a number to start a new operation,
--  press operands several times, change type -> the operand taken into account will be the last
--  click on the calculator but in between buttons
 
-## Things I would improve for a bigger project 
+- keep doing operations and adding operands, testing each operand --> ex: 1 + 2 \* 3 - 4 / 5 % +/ ...
+- press C to clear, DEL to delete 1
+- compute an operation pressing "=" then press on an operand to continue calculating with the result,
+- compute an operation pressing "=" then press on a number to start a new operation,
+- press operands several times, change type -> the operand taken into account will be the last
+- click on the calculator but in between buttons
+
+## Things I would improve for a bigger project
+
 - Add a "del" button that works in all situations. I had implemented it, but it would need some refactoring of the whole JS to work with a variety of edge cases. Also, it was not included in the iphone calculator and estimated that it was therefore out of scope for a "simple calculator".
 - add all the buttons of the iphone calculator but when held in paysage.
 - Use a more OOP approach to my JS.

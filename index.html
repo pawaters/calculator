@@ -1,69 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Pierre's Assignment for Neomore</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
     <header>
-        <a href="https://neomore.fi/">
-            <img src="neomore_logo.png" alt="neomore.fi logo" id="header-logo">
-        </a>
-        <h1><span style="color:#ff3333;">ASSIGNMENT:</span> A SIMPLE CALCULATOR</h1>
-        <a href="https://github.com/pawaters/calculator" id="github-link">GITHUB REPOSITORY</a>
+      <a href="https://neomore.fi/">
+        <img src="neomore_logo.png" alt="neomore.fi logo" id="header-logo" />
+      </a>
+      <h1>
+        <span style="color: #ff3333">ASSIGNMENT:</span> A SIMPLE CALCULATOR
+      </h1>
+      <a href="https://github.com/pawaters/calculator" id="github-link"
+        >GITHUB REPOSITORY</a
+      >
     </header>
-    <div class="calculator"> 
-        <div class="display-container">
-            <div class="calculation-display" id="calculation-display"></div>
-            <input type="text" id="display" readonly>
-        </div>
-        <div class="buttons">
-            <button class="digit">1</button>
-            <button class="digit">2</button>
-            <button class="digit">3</button>
-            <button class="operator">+</button>
-            <button class="digit">4</button>
-            <button class="digit">5</button>
-            <button class="digit">6</button>
-            <button class="operator">-</button>
-            <button class="digit">7</button>
-            <button class="digit">8</button>
-            <button class="digit">9</button>
-            <button class="operator">*</button>
-            <button class="clear">C</button>
-            <button class="digit">0</button>
-            <button class="digit">.</button>
-            <button class="operator">/</button>
-            <button class="equal">=</button>
-            <button class="operator">-/+</button>
-            <button class="operator">%</button>
-
-        </div>
+    <div class="calculator">
+      <div class="display-container">
+        <div class="calculation-display" id="calculation-display"></div>
+        <input type="text" id="display" readonly />
+      </div>
+      <div class="buttons">
+        <button class="digit">1</button>
+        <button class="digit">2</button>
+        <button class="digit">3</button>
+        <button class="operator">+</button>
+        <button class="digit">4</button>
+        <button class="digit">5</button>
+        <button class="digit">6</button>
+        <button class="operator">-</button>
+        <button class="digit">7</button>
+        <button class="digit">8</button>
+        <button class="digit">9</button>
+        <button class="operator">*</button>
+        <button class="clear">C</button>
+        <button class="digit">0</button>
+        <button class="digit">.</button>
+        <button class="operator">/</button>
+        <button class="equal">=</button>
+        <button class="operator">-/+</button>
+        <button class="operator">%</button>
+      </div>
     </div>
     <div class="test-container">
-        <div class="test-button-container">
-            <button id="test-button" onclick="handleTests()">Run Tests</button>
-            <button id="clear-test-button" onclick="clearTests()" style="display:none;">Clear Tests</button>
-        </div>
-        <div id="test-table" style="display: none;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>SEQUENCE TESTED</th>
-                        <th>EXPECTED OUTPUT</th>
-                        <th>ACTUAL OUTPUT</th>
-                        <th>TEST RESULT</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                </tbody>
-            </table>
-        </div>
+      <div class="test-button-container">
+        <button id="test-button" onclick="handleTests()">Run Tests</button>
+        <button
+          id="clear-test-button"
+          onclick="clearTests()"
+          style="display: none"
+        >
+          Clear Tests
+        </button>
+      </div>
+      <div id="test-table" style="display: none">
+        <table>
+          <thead>
+            <tr>
+              <th>SEQUENCE TESTED</th>
+              <th>EXPECTED OUTPUT</th>
+              <th>ACTUAL OUTPUT</th>
+              <th>TEST RESULT</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
     </div>
     <footer>
-        <p>©2023 Neomore Oy. Assignment made by pawaters.</p>
+      <p>©2023 Neomore Oy. Assignment made by pawaters.</p>
     </footer>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
