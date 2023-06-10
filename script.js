@@ -6,6 +6,7 @@ let currentResult = null;
 let awaitingNextOperand = false;
 let resultShown = false;
 let resultShownCalcDisplay = false;
+let lastEnteredOperator = false;
 
 function clear() {
     display.value = "";
@@ -59,12 +60,25 @@ function toggleSign() {
 }
 
 function deleteLast() {
-    if (awaitingNextOperand === false) {
+    if (resultShown) {
+        clear()
+    }
+    if (!lastEnteredOperator) {
         display.value = display.value.slice(0, -1);
         let calcDispValue = calculationDisplay.innerHTML;
-        calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.length - 1);
+        if (calcDispValue.endsWith(' ')) {
+            calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.length - 3);
+        } else {
+            calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.length - 1);
+        }
+    } else {
+        let calcDispValue = calculationDisplay.innerHTML;
+        calculationDisplay.innerHTML = calcDispValue.slice(0, calcDispValue.lastIndexOf(' '));
+        operator = null;
+        lastEnteredOperator = false;
     }
 }
+
 
 function percent() {
     if (awaitingNextOperand === false) {
@@ -86,7 +100,7 @@ function appendNumber(number) {
     if (number === '.' && display.value.includes('.')) return;
     display.value += number;
     appendCalculationDisplay(number);
-
+    lastEnteredOperator = false
 }
 
 function performCalculation(operand) {
@@ -120,6 +134,7 @@ function chooseOperation(oper) {
     awaitingNextOperand = true;
     operator = oper;
     appendCalculationDisplay(' ' + operator + ' ');
+    lastEnteredOperator = true;
 }
 
 
