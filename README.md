@@ -36,5 +36,5 @@ Click the "Run Tests" button and the results will be displayed. They cover:
 -  click on the calculator but in between buttons
 
 ## Things I would improve for a bigger project 
-- Add a "del" button that works in all situations. I had implemented it, but it would need some refactoring of the whole JS to work with a variety of edge cases.
+- Add a "del" button that works in all situations. I had implemented it, but it would need some refactoring of the whole JS to work with a variety of edge cases. Also, it was not included in the iphone calculator and estimated that it was therefore out of scope for a "simple calculator".
 - Use a more OOP approach to my JS.
