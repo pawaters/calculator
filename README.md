@@ -26,7 +26,7 @@ Here are the principles I followed:
 - readable & self-explanatory
 - DRY
 - Error handling
-- Automated testing
+- Automated testing.
 - consistency
 - single responsibility: one function does one thing.
 
@@ -43,6 +43,7 @@ Click the "Run Tests" button and the results will be displayed. They cover:
 - each operation and operand,
 - divived by 0 error case, as well as dividing 10 by 3 and checking for the max number of decimals, as well as multiplying 2 big numbers.
 - I have created a runTest() function which you can easily adapt. Its limitation is that it is made for one operand, and does not test the UI of course.
+we also checked during all tests that no console error came up.
 
 ### test cases recommended to manually test:
 
