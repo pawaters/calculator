@@ -20,16 +20,21 @@
 
 ## Bonus: Automated testing and planned test cases
 
-### 5 test cases have been automated:
-- using the functions appendNumber(), chooseOperation(), compute() and clear. 
-- Each of the 4 operands is tested, along with the divived by 0 error case, as well as dividing 10 by 3 and checking for the max number of decimals, as well as multiplying 2 big numbers. 
-- Click the "Run Tests" button and the results will be displayed. 
+### test cases have been automated:
+
+Click the "Run Tests" button and the results will be displayed. They cover:
+- each operation and operand,
+- divived by 0 error case, as well as dividing 10 by 3 and checking for the max number of decimals, as well as multiplying 2 big numbers. 
 - I have created a runTest() function which you can easily adapt. Its limitation is that it is made for one operand, and does not test the UI of course.
 
-### 5 test cases are recommended to manually test:
+### test cases recommended to manually test:
 -  keep doing operations and adding operands, testing each operand --> ex: 1 + 2 * 3 - 4 / 5 % +/ ...
 -  press C to clear, DEL to delete 1
 -  compute an operation pressing "=" then press on an operand to continue calculating with the result, 
 -  compute an operation pressing "=" then press on a number to start a new operation,
 -  press operands several times, change type -> the operand taken into account will be the last
 -  click on the calculator but in between buttons
+
+## Things I would improve for a bigger project 
+- Add a "del" button that works in all situations. I had implemented it, but it would need some refactoring of the whole JS to work with a variety of edge cases.
+- Use a more OOP approach to my JS.
