@@ -35,7 +35,7 @@ function toggleSign() {
         currentResult = -currentResult;
         display.value = currentResult;
         calculationDisplay.innerHTML = currentResult;
-    } else {
+    } else if (awaitingNextOperand === false) {
         if (display.value.startsWith('-')) {
             display.value = display.value.slice(1);
         } else {
@@ -46,7 +46,7 @@ function toggleSign() {
     if (resultShownCalcDisplay) {
         updateCalculationDisplay(currentResult);
         resultShownCalcDisplay = false;
-    } else {
+    } else if (awaitingNextOperand === false) {
         // Replace the last number in the calculation display with its negative/positive counterpart
         let lastNumberRegex = /(?:[+\-*/] )?([0-9.]+)$/;
         let match = calculationDisplay.innerHTML.match(lastNumberRegex);
