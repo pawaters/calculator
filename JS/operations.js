@@ -98,7 +98,6 @@ function chooseOperation(oper) {
 
   let operand = parseFloat(display.value);
 
-  // Perform calculation if operator was already chosen
   if (operator !== null && !awaitingNextOperand) {
     performCalculation(operand);
   } else {
