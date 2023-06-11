@@ -43,9 +43,7 @@ To check for all that, I reviewed my code and used Eslint, as well as Prettier f
 Each function is nearly always less than 25 lines.
 I decided to keep all JS in one file given the simplicity of the project.
 
-## Bonus: Automated testing and planned test cases
-
-### recommended test cases :
+## Bonus: Automated testing and recommended test cases
 
 Click the "Run Tests" button and the results will be displayed. They cover:
 
