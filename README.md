@@ -18,6 +18,7 @@
 - if divides by = 0, Error message appears "Error: Cannot Divide by 0"
 - decimals: up to 12 decimals, as from 14 decimals we have observed some strange behaviors in some cases. It is apparently inherent to computers and its management of floats after some research.
 - upper limit: from e+80, or 10^80, the last integer before the exponent of 10 again has some similar weird behavior as when asking for 12+ decimals.
+- automated testing by pressing on the button "Run Tests" below the calculator, unless you are on mobile size where it disappears for usability/responsiveness reasons
 
 ## Clean and reusable code
 
@@ -56,5 +57,6 @@ As for manual tests to check the approach of clicking on buttons or typing direc
 
 ## Things I would improve for a bigger project
 
+- designed the HTML in as similar fashion to REACT, where each UI part is a module, and the 3 classes I defined would refer to parameters like "calculatorUI", "button", and keep it more modular on the UI side.
 - Add a "del" button that works in all situations. I had started to implement it, but it would need some refactoring of the whole JS to work with a variety of edge cases without bugs. Also, it was not included in the iphone calculator and estimated that it was therefore out of scope for a "simple calculator".
 - add all the buttons of the iphone calculator but when held in paysage.
