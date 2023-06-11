@@ -1,9 +1,4 @@
-//when we refer to display, we refer to the main display where what you type appears directly - the bottom one. 
-// It can only have the number the user is currently typing. 
 let display = document.getElementById("display"); 
-
-//when we refer to calculation display, we refer to the top display where the ongoing sequence of calculations is displayed.
-// For example, "1 + 1"
 let calculationDisplay = document.getElementById("calculation-display");
 let buttons = Array.from(document.getElementsByClassName("buttons"));
 let operator = null;
