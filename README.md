@@ -19,15 +19,23 @@
 - decimals: up to 12 decimals, as from 14 decimals we have observed some strange behaviors in some cases. It is apparently inherent to computers and its management of floats after some research.
 - upper limit: from e+80, or 10^80, the last integer before the exponent of 10 again has some similar weird behavior as when asking for 12+ decimals.
 
-## Clean code
+## Clean and reusable code
 
 Here are the principles I followed:
 - readable & self-explanatory
 - DRY
 - Error handling
-- Automated testing.
+- Automated testing
 - consistency
-- single responsibility: one function does one thing.
+- single responsibility
+- modularity
+- use of version control systems
+
+I initially started with a functional approach, as it was a simple calculator.
+However, after testing, it seemed that refactoring so with a OOP approach and 3 clear classes made it cleaner: Calculator, Operations and Tests.
+Calculator and Tests requires the use of the Operation class.
+All the classes assume the existence of the key HTML elements.
+The HTML was built in a way to let for dynamic generation of the buttons as well as encapsulating elements within clear parents.
 
 To check for all that, I reviewed my code and used Eslint, as well as Prettier for formatting. 
 Each function is nearly always less than 25 lines.
