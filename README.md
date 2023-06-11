@@ -8,7 +8,7 @@
 ## Calculator features.
 
 - perform sum, substract, multiply and divide
-- the UI approach and buttons I used are based on the iphone calculator, when held in portrait, which I assume is the most used "simple calculator" in the world,
+- the UI approach and buttons I used are based on the iphone calculator, when held in portrait, which I assume is the most used "simple calculator" in the world. From that design, I added one useful thing: The top "calculation display" that shows on top of the result the sequence of operations you just did.
 - layout is responsive with a special simplified UI for mobile sizes (the header, footer and tests will appear only if width super to 600px)
 - you can either type or press the buttons,
 - the colors, font and style is based on Neomore's web,
