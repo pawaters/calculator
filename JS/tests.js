@@ -1,5 +1,6 @@
 class Tests {
   constructor() {
+    this.operations = new Operations(document.getElementById("display"), document.getElementById("calculation-display"));
     this.testTable = document.getElementById("test-table");
     this.tableBody = document.getElementById("table-body");
     this.testButton = document.getElementById("test-button");
@@ -24,14 +25,14 @@ class Tests {
   }
 
   runTest(commands, expectedResult) {
-    Operations.clear();
+    this.operations.clear();
     let testDescription = "";
 
     for (let i = 0; i < commands.length; i++) {
       let command = commands[i];
 
       if (typeof command === "number" || command.includes(".")) {
-        Operations.appendNumber(command.toString());
+        this.operations.appendNumber(command.toString());
         testDescription += command.toString();
       } else {
         switch (command) {
@@ -39,19 +40,19 @@ class Tests {
           case "-":
           case "*":
           case "/":
-            Operations.chooseOperation(command);
+            this.operations.chooseOperation(command);
             testDescription += " " + command + " ";
             break;
           case "=":
-            Operations.compute();
+            this.operations.compute();
             testDescription += " " + command + " ";
             break;
           case "-/+":
-            Operations.toggleSign();
+            this.operations.toggleSign();
             testDescription += " " + command + " ";
             break;
           case "%":
-            Operations.percent();
+            this.operations.percent();
             testDescription += " " + command + " ";
             break;
           default:
@@ -66,7 +67,7 @@ class Tests {
     row.insertCell(1).innerHTML = expectedResult;
     row.insertCell(2).innerHTML = display.value;
     row.insertCell(3).innerHTML = result;
-    Operations.clear();
+    this.operations.clear();
   }
 
   runTests() {
