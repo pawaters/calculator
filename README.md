@@ -58,4 +58,3 @@ As for manual tests to check the approach of clicking on buttons or typing direc
 
 - Add a "del" button that works in all situations. I had started to implement it, but it would need some refactoring of the whole JS to work with a variety of edge cases without bugs. Also, it was not included in the iphone calculator and estimated that it was therefore out of scope for a "simple calculator".
 - add all the buttons of the iphone calculator but when held in paysage.
-- Use a more OOP approach to my JS.
