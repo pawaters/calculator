@@ -51,10 +51,8 @@ class Operations {
         let newNumber = lastNumber.startsWith("-")
           ? lastNumber.slice(1)
           : "-" + lastNumber;
-        this.calculationDisplay.innerHTML = this.calculationDisplay.innerHTML.replace(
-          lastNumberRegex,
-          newNumber
-        );
+        this.calculationDisplay.innerHTML =
+          this.calculationDisplay.innerHTML.replace(lastNumberRegex, newNumber);
       }
     }
   }
@@ -83,8 +81,11 @@ class Operations {
   }
 
   performCalculation(operand) {
-    this.currentResult = eval(this.currentResult + " " + this.operator + " " + operand);
-    this.currentResult = Math.round(this.currentResult * 1000000000000) / 1000000000000;
+    this.currentResult = eval(
+      this.currentResult + " " + this.operator + " " + operand
+    );
+    this.currentResult =
+      Math.round(this.currentResult * 1000000000000) / 1000000000000;
     this.display.value = this.currentResult;
   }
 
