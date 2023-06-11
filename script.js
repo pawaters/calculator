@@ -204,28 +204,43 @@ function clearTests() {
     clearTestButton.style.display = 'none';
     testButton.style.display = 'inline-block';
 }
-
 function runTest(commands, expectedResult) {
   clear();
   let testDescription = "";
+
   for (let i = 0; i < commands.length; i++) {
     let command = commands[i];
+
     if (typeof command === "number" || command.includes(".")) {
       appendNumber(command.toString());
       testDescription += command.toString();
-    } else if (["+", "-", "*", "/", "=", "-/+", "%"].includes(command)) {
-      if (command === "=") {
-        compute();
-      } else if (command === "-/+") {
-        toggleSign();
-      } else if (command === "%") {
-        percent();
-      } else {
-        chooseOperation(command);
+    } else {
+      switch (command) {
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+          chooseOperation(command);
+          testDescription += " " + command + " ";
+          break;
+        case "=":
+          compute();
+          testDescription += " " + command + " ";
+          break;
+        case "-/+":
+          toggleSign();
+          testDescription += " " + command + " ";
+          break;
+        case "%":
+          percent();
+          testDescription += " " + command + " ";
+          break;
+        default:
+          console.error(`Unknown command: ${command}`);
       }
-      testDescription += " " + command + " ";
     }
   }
+
   const result = display.value == expectedResult ? "Passed" : "Failed";
   let tableBody = document.getElementById("table-body");
   let row = tableBody.insertRow();
@@ -235,6 +250,7 @@ function runTest(commands, expectedResult) {
   row.insertCell(3).innerHTML = result;
   clear();
 }
+
 
 function runTests() {
   let testTable = document.getElementById("test-table");
