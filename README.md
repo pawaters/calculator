@@ -12,7 +12,7 @@
 - layout is responsive with a special simplified UI for mobile sizes (the header, footer and tests will appear only if width super to 600px)
 - you can either type or press the buttons,
 - the colors, font and style is based on Neomore's web,
-- only used vanilla HTML5/CSS/JavaScript for the implementation.
+- only used vanilla HTML5/CSS/JavaScript for the implementation. no libraries or frameworks to show more coding. 
 - can keep adding operands, not limited to 1, 2 or 3.
 - can press on "=", then if choose an operand the calculation continues
 - if divides by = 0, Error message appears "Error: Cannot Divide by 0"
