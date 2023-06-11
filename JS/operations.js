@@ -89,6 +89,9 @@ class Operations {
   }
 
   chooseOperation(oper) {
+    if (this.awaitingNextOperand) {
+      return;
+    }
     if (this.resultShownCalcDisplay) {
       this.calculationDisplay.innerHTML = this.currentResult;
       this.resultShownCalcDisplay = false;
